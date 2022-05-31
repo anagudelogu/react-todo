@@ -14,12 +14,13 @@ const TodoContainer = () => {
 
   useEffect(() => {
     const temp = JSON.stringify(todos);
+    console.log(temp);
     localStorage.setItem('todos', temp);
   }, [todos]);
 
   const handleChange = (id) => {
-    setTodos((prevTodos) => {
-      prevTodos.map((todo) => {
+    setTodos(
+      todos.map((todo) => {
         if (todo.id === id) {
           return {
             ...todo,
@@ -27,8 +28,8 @@ const TodoContainer = () => {
           };
         }
         return todo;
-      });
-    });
+      }),
+    );
   };
 
   const delTodo = (id) => {
